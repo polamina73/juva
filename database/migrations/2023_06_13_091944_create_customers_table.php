@@ -9,12 +9,12 @@ return new class extends Migration {
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('customerName');
-            $table->string('customerMobile')->unique();
-            $table->string('customerInvitedBy');
-            $table->integer('customerCount_Of_Visits')->nullable();
-            $table->string('customerLast_Visit')->nullable();
-            $table->string('customerAdded_by')->nullable();
+            $table->string('name');
+            $table->string('mobile')->unique();
+            $table->string('source');
+            $table->integer('count_of_visits')->nullable();
+            $table->string('last_visit')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

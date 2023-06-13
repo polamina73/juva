@@ -62,3 +62,18 @@
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
 
+@if(Session::has('success'))
+    <script>
+        let message = "{{ Session::get('success') }}";
+        not7(message)
+    </script>
+@endif
+
+@if($errors->any())
+    <script>
+        let message = "{{ $errors->first() }}";
+        not8(message)
+    </script>
+@endif
+
+@yield('scripts')

@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		@include('layouts.meta')
+        <title> {{ config('app.name' , 'Juva') }} - @yield('title') </title>
 		@include('layouts.head')
         @yield('css')
 	</head>

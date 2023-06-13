@@ -1,5 +1,4 @@
 <!-- Title -->
-<title> Juva - @yield('title') </title>
 <!-- Favicon -->
 <link rel="icon" href="{{asset('assets/img/Transpernt-Logo.png')}}" type="image/x-icon"/>
 <!-- Icons css -->

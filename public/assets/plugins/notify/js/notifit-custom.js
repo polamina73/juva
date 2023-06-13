@@ -49,16 +49,17 @@ function not6() {
 		bottom:'10'
 	});
 }
-function not7() {
-	notif({
-		msg: "<b>Success:</b> Well done Details Submitted Successfully",
-		type: "success"
-	});
+function not7(message) {
+    notif({
+        msg: `${message}`,
+        type: "success",
+        position: "center"
+    });
 }
 
-function not8() {
+function not8(message) {
 	notif({
-		msg: "<b>Oops!</b> An Error Occurred",
+		msg: `<b>خطأ!</b> ${message}`,
 		type: "error",
 		position: "center"
 	});

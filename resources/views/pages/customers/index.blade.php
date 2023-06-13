@@ -35,30 +35,30 @@
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <label for="customerName">اسم العميل</label>
-                                                <input id="customerName" class="form-control @error('customerName') is-invalid @enderror" placeholder="الاسم"
-                                                       type="text" name="customerName" >
-                                                @error('customerName')
+                                                <label for="name">اسم العميل</label>
+                                                <input id="name" class="form-control @error('name') is-invalid @enderror" placeholder="الاسم"
+                                                       type="text" name="name" >
+                                                @error('name')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="customerMobile">رقم العميل</label>
-                                                <input id="customerMobile" class="form-control @error('customerMobile') is-invalid @enderror"
-                                                       placeholder="رقم الموبيل" type="text" name="customerMobile">
-                                                @error('customerMobile')
+                                                <label for="mobile">رقم العميل</label>
+                                                <input id="mobile" class="form-control @error('mobile') is-invalid @enderror"
+                                                       placeholder="رقم الموبيل" type="text" name="mobile">
+                                                @error('mobile')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="customerInvitedBy">مدعو من</label>
-                                                <input id="customerInvitedBy" class="form-control @error('customerInvitedBy') is-invalid @enderror" placeholder="مدعو من"
-                                                       type="text" name="customerInvitedBy">
-                                                @error('customerInvitedBy')
+                                                <label for="source">مدعو من</label>
+                                                <input id="source" class="form-control @error('source') is-invalid @enderror" placeholder="مدعو من"
+                                                       type="text" name="source">
+                                                @error('source')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example">
+                        <table class="table text-md-nowrap" id="">
                             <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">اسم العميل</th>
@@ -96,12 +96,12 @@
                             <tbody>
                             @foreach($customers as $customer)
                                 <tr>
-                                    <td>{{$customer->customerName}}</td>
-                                    <td>{{$customer->customerMobile}}</td>
-                                    <td>{{$customer->customerInvitedBy}}</td>
-                                    <td>{{$customer->customerCount_Of_Visits}}</td>
-                                    <td>{{$customer->customerLast_Visit}}</td>
-                                    <td>{{$customer->customerAdded_by}}</td>
+                                    <td>{{$customer->name}}</td>
+                                    <td>{{$customer->mobile}}</td>
+                                    <td>{{$customer->source}}</td>
+                                    <td>{{$customer->count_of_visits}}</td>
+                                    <td>{{$customer->last_visit}}</td>
+                                    <td>{{$customer->added_by->name}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

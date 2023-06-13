@@ -4,22 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
+use DataTables;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::all();
-        return view('pages.Cusomters.index',compact('customers'));
+        $customers = Customer::latest()->paginate(25);
+        return view('pages.customers.index',compact('customers'));
     }
 
     public function store(CustomerRequest $request)
     {
         $customer = $request->validated();
-        $customer['customerAdded_by'] = Auth::user()->id;
+        $customer['user_id'] = Auth::user()->id;
         Customer::create($customer);
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with(['success' => 'تم إضافة العميل بنجاح']);
     }
 
     public function show(Customer $customer)

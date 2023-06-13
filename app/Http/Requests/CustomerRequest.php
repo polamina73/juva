@@ -10,9 +10,9 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customerName' =>['required'],
-            'customerMobile'=>['required' , 'numeric' , Rule::unique('customers' , 'customerMobile')],
-            'customerInvitedBy' =>['required']
+            'name' => ['required'],
+            'mobile' => ['required' , 'numeric' , Rule::unique('customers' , 'mobile')],
+            'source' => ['required'],
         ];
     }
 
@@ -20,14 +20,14 @@ class CustomerRequest extends FormRequest
     {
         return true;
     }
-    public function messages()
+    public function messages(): array
     {
         return [
-            'customerName.required' => __('validation.required' , ['attribute' => 'الاسم']),
-            'customerMobile.required' => __('validation.required' , ['attribute' => 'الموبيل']),
-            'customerInvitedBy.required' => __('validation.required' , ['attribute' => 'سبب الدعوة']),
-            'customerMobile.unique' => __('validation.unique', ['attribute' => 'الموبيل']),
-            'customerMobile.numeric' => __('validation.numeric' , ['attribute' => 'الموبيل'])
+            'name.required' => __('validation.required' , ['attribute' => 'الاسم']),
+            'mobile.required' => __('validation.required' , ['attribute' => 'الموبيل']),
+            'source.required' => __('validation.required' , ['attribute' => 'سبب الدعوة']),
+            'mobile.unique' => __('validation.unique', ['attribute' => 'الموبيل']),
+            'mobile.numeric' => __('validation.numeric' , ['attribute' => 'الموبيل'])
         ];
     }
 }
