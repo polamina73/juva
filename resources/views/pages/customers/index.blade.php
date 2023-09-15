@@ -1,5 +1,14 @@
 @extends('layouts.master')
 @section('title','Customers')
+@section('css')
+    <!-- Internal Data table css -->
+    <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+@endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
@@ -37,7 +46,7 @@
                                             <div class="form-group">
                                                 <label for="name">اسم العميل</label>
                                                 <input id="name" class="form-control @error('name') is-invalid @enderror" placeholder="الاسم"
-                                                       type="text" name="name" >
+                                                       type="text" name="name"  value="{{ old('name') }}">
                                                 @error('name')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -47,7 +56,8 @@
                                             <div class="form-group">
                                                 <label for="mobile">رقم العميل</label>
                                                 <input id="mobile" class="form-control @error('mobile') is-invalid @enderror"
-                                                       placeholder="رقم الموبيل" type="text" name="mobile">
+                                                       placeholder="رقم الموبيل" type="text" name="mobile" value="{{ old('mobile') }}"
+                                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                                 @error('mobile')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -57,7 +67,7 @@
                                             <div class="form-group">
                                                 <label for="source">مدعو من</label>
                                                 <input id="source" class="form-control @error('source') is-invalid @enderror" placeholder="مدعو من"
-                                                       type="text" name="source">
+                                                       type="text" name="source"  value="{{ old('source') }}">
                                                 @error('source')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -76,13 +86,11 @@
                             </div>
                         </div>
                         <!--End Large Modal -->
-                        <h4 class="card-title mg-b-0">العملاء</h4>
-                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="">
+                        <table class="table text-md-nowrap" id="example">
                             <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">اسم العميل</th>
@@ -119,4 +127,32 @@
     </div>
 
     <!-- main-content closed -->
+@endsection
+@section('js')
+    <!-- Internal Data tables -->
+    <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/pdfmake.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/vfs_fonts.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
+    <!--Internal  Datatable js -->
+    <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
+
+    @if(\Illuminate\Support\Facades\Session::has('open-modal'))
+        <script>
+            $('#CreateCustomer').modal('toggle');
+            {{ \Illuminate\Support\Facades\Session::forget('open-modal') }}
+        </script>
+    @endif
 @endsection

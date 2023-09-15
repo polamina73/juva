@@ -18,7 +18,7 @@ class CustomerFactory extends Factory
         return [
             'name' => $this->faker->name,
             'mobile' => $this->faker->phoneNumber,
-            'source' => array_rand(['facebook', 'instagram', 'friendship']),
+            'source' => ['facebook', 'instagram', 'friendship'][array_rand(['facebook', 'instagram', 'friendship'])],
             'count_of_visits' => random_int(1,10),
             'last_visit' => Carbon::now(),
             'user_id' => 1,

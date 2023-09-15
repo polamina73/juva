@@ -127,16 +127,16 @@
       })
     }
   });
-   
+
    $(document).on('click', '.sidebar-remove', function(event) {
 	   event.preventDefault();
-		$('.sidebar').removeClass('sidebar-open');	   
+		$('.sidebar').removeClass('sidebar-open');
 	});
-	
-	
-	// ______________ PerfectScrollbar	
-	const ps1 = new PerfectScrollbar('.sidebar-left', {
-		useBothWheelAxes:false,
-		suppressScrollX:false,
-	});
+
+
+	// ______________ PerfectScrollbar
+	// const ps1 = new PerfectScrollbar('.sidebar-left', {
+	// 	useBothWheelAxes:false,
+	// 	suppressScrollX:false,
+	// });
 }(jQuery);
